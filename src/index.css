@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: "Gilroy";
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-black rounded-xl py-[10px] px-[24px] text-white;
+  }
+  .container {
+    @apply w-[95%] max-w-[1400px] mx-auto;
+  }
+}
+
+.hero-background {
+  background-image: url("assets/images/hero/hero-1.png");
+  background-position: 100px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+* {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}

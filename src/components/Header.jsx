@@ -29,7 +29,7 @@ function Header() {
 
   return (
     <header>
-      <div className="flex justify-between py-8 container">
+      <div className="flex justify-between  py-8 container">
         <h2 className="text-2xl font-bold">
           <Link aria-label="apple home page" to={"/"}>
             Apple
@@ -66,10 +66,12 @@ function Header() {
                     <h2 className="font-bold">My Account</h2>
                     <hr className="my-2" />
                     <div className="flex flex-col gap-2">
-                      <div className="flex items-center gap-2">
-                        <HiOutlineSquares2X2 className="text-xl" />
-                        <Link to={"/dashboard"}>Dashboard</Link>
-                      </div>
+                      {currentUser.user.role === "admin" && (
+                        <div className="flex items-center gap-2">
+                          <HiOutlineSquares2X2 className="text-xl" />
+                          <Link to={"/dashboard"}>Dashboard</Link>
+                        </div>
+                      )}
                       <div className="flex items-center gap-2">
                         <HiMiniArrowRightOnRectangle className="text-xl" />
                         <button

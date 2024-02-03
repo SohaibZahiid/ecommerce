@@ -21,6 +21,8 @@ import {
   ProdcuctContextProvider,
   ProductContext,
 } from "./context/ProductContext.jsx";
+import Success from "./pages/Success.jsx";
+import Checkout from "./pages/Checkout.jsx";
 
 // const router = createBrowserRouter([
 //   {
@@ -85,12 +87,20 @@ const router = createBrowserRouter([
         element: <Cart />,
       },
       {
+        path: "success",
+        element: <Success />,
+      },
+      {
         path: "login",
         element: <Login />,
       },
       {
         path: "register",
         element: <Register />,
+      },
+      {
+        path: "checkout",
+        element: <Checkout />,
       },
     ],
   },
@@ -115,14 +125,12 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <AuthContextProvier>
-      <ProdcuctContextProvider>
-        <CartContextProvider>
-          <Toaster />
-          <RouterProvider router={router} />
-        </CartContextProvider>
-      </ProdcuctContextProvider>
-    </AuthContextProvier>
-  </React.StrictMode>
+  <AuthContextProvier>
+    <ProdcuctContextProvider>
+      <CartContextProvider>
+        <Toaster />
+        <RouterProvider router={router} />
+      </CartContextProvider>
+    </ProdcuctContextProvider>
+  </AuthContextProvier>
 );

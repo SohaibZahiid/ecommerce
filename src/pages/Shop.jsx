@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Product from "../components/Product";
-import { getRequest } from "../services/api";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { toast } from "sonner";

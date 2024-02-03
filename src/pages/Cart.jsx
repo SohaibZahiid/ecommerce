@@ -3,8 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import CartItem from "../components/CartItem";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
-import { postRequest } from "../services/api";
 import { AuthContext } from "../context/AuthContext";
+import { toast } from "sonner";
+import axios from "axios";
 
 function Cart() {
   const { cart, getGrandTotal } = useContext(CartContext);
@@ -14,11 +15,22 @@ function Cart() {
   const handleCheckout = async () => {
     if (currentUser) {
       try {
-        const res = await postRequest("checkout", cart);
-        console.log(res);
-        // window.open(res.url, "_blank");
+        const res = await axios.post(
+          `${import.meta.env.VITE_API_BASE_URL}/stripe/checkout`,
+          cart,
+          {
+            headers: {
+              "auth-token": `Bearer ${currentUser.token}`,
+            },
+          }
+        );
+
+        if (res.status === 200) {
+          // window.open(res.data.url, "_blank");
+          // window.open(res.data.url);
+        }
       } catch (error) {
-        console.log(error);
+        toast.error(error.message);
       }
     } else {
       navigate("/login");
@@ -26,7 +38,7 @@ function Cart() {
   };
 
   return (
-    <section className="my-10">
+    <section className="my-10 flex-1">
       <div className="container">
         <h2 className="font-bold text-2xl">Cart</h2>
 

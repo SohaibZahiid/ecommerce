@@ -1,9 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import image from "../assets/images/image-1.svg";
 import { useState } from "react";
-import { postRequest } from "../services/api";
 import { HiArrowLeft } from "react-icons/hi2";
-import { Formik, useFormik } from "formik";
+import { useFormik } from "formik";
 import { registerSchema } from "../schemas";
 import axios from "axios";
 import { toast } from "sonner";

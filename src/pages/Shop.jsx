@@ -63,7 +63,7 @@ function Shop() {
   };
 
   return (
-    <section className="mt-10 mb-20">
+    <section className="flex-1 mt-10 mb-20">
       <div className="container flex flex-col sm:flex-row gap-8">
         <div className="flex-2 accent-black ">
           <h2 className="font-bold">Product Categories</h2>

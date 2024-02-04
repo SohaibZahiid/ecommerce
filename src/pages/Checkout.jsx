@@ -12,6 +12,7 @@ import { AuthContext } from "../context/AuthContext";
 import { useLocation, useNavigate } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import { toast } from "sonner";
+import axios from "axios";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_KEY);
 
@@ -21,7 +22,7 @@ const CheckoutForm = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const navigate = useNavigate();
 
-  const { cart, getGrandTotal } = useContext(CartContext);
+  const { cart, getGrandTotal, clearCart } = useContext(CartContext);
   const { currentUser } = useContext(AuthContext);
 
   const submitHandler = async (e) => {
@@ -31,9 +32,10 @@ const CheckoutForm = () => {
     setIsProcessing(true);
 
     const orderData = {
-      orderItems: cart,
-      total: getGrandTotal(),
+      products: cart,
+      amount: getGrandTotal(),
       user: currentUser.user._id,
+      status: "paid",
     };
 
     const { paymentIntent, error } = await stripe.confirmPayment({
@@ -48,8 +50,23 @@ const CheckoutForm = () => {
     }
 
     if (paymentIntent.status === "succeeded") {
-      console.log("here create new order ");
-      navigate("/home");
+      try {
+        const res = await axios.post(
+          `${import.meta.env.VITE_API_BASE_URL}/orders`,
+          orderData,
+          {
+            headers: {
+              "auth-token": `Bearer ${currentUser.token}`,
+            },
+          }
+        );
+        if (res.data) {
+          clearCart();
+          navigate("/success", { state: res.data._id });
+        }
+      } catch (error) {
+        toast.error(error.message);
+      }
     }
     setIsProcessing(false);
   };

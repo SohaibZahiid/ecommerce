@@ -15,6 +15,11 @@ export const CartContextProvider = ({ children }) => {
     }
   }, [cart]);
 
+  const clearCart = () => {
+    setCart([]);
+    localStorage.removeItem("cart");
+  };
+
   const addToCart = (product) => {
     const alreadyExists = cart.find((p) => p._id === product._id);
 
@@ -69,6 +74,7 @@ export const CartContextProvider = ({ children }) => {
       value={{
         cart,
         addToCart,
+        clearCart,
         removeFromCart,
         getGrandTotal,
         incrementQuantity,

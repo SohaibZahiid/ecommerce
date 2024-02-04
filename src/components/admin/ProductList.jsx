@@ -78,7 +78,7 @@ function ProductList() {
                 {products.map((product) => (
                   <tr key={product._id} className="border-b">
                     <td className="whitespace-nowrap px-6 py-4 font-medium">
-                      <div className="flex flex-col items-center">
+                      <div className="flex flex-col">
                         <h2>{product.title}</h2>
                         <img
                           src={product.image}

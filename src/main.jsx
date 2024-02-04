@@ -1,4 +1,4 @@
-import React from "react";
+import React, { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
@@ -13,16 +13,16 @@ import { CartContextProvider } from "./context/CartContext.jsx";
 import { AuthContextProvier } from "./context/AuthContext.jsx";
 import Admin from "./pages/admin/Admin.jsx";
 import Dashboard from "./pages/admin/Dashboard.jsx";
-import AdminLayout from "./layouts/AdminLayout.jsx";
 import Products from "./pages/admin/Products.jsx";
 import Profile from "./pages/admin/Profile.jsx";
 import { Toaster } from "sonner";
-import {
-  ProdcuctContextProvider,
-  ProductContext,
-} from "./context/ProductContext.jsx";
+import { ProdcuctContextProvider } from "./context/ProductContext.jsx";
 import Success from "./pages/Success.jsx";
 import Checkout from "./pages/Checkout.jsx";
+import MyOrders from "./pages/MyOrders.jsx";
+import Orders from "./pages/admin/Orders.jsx";
+import Chart from "./components/admin/Chart.jsx";
+import Panel from "./pages/admin/Panel.jsx";
 
 // const router = createBrowserRouter([
 //   {
@@ -102,16 +102,24 @@ const router = createBrowserRouter([
         path: "checkout",
         element: <Checkout />,
       },
+      {
+        path: "myorders",
+        element: <MyOrders />,
+      },
     ],
   },
-  {
-    path: "admin",
-    element: <Admin />,
-  },
+  // {
+  //   path: "admin",
+  //   element: <Admin />,
+  // },
   {
     path: "dashboard",
     element: <Dashboard />,
     children: [
+      {
+        path: "",
+        element: <Panel />,
+      },
       {
         path: "products",
         element: <Products />,
@@ -120,17 +128,23 @@ const router = createBrowserRouter([
         path: "profile",
         element: <Profile />,
       },
+      {
+        path: "orders",
+        element: <Orders />,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <AuthContextProvier>
-    <ProdcuctContextProvider>
-      <CartContextProvider>
-        <Toaster />
-        <RouterProvider router={router} />
-      </CartContextProvider>
-    </ProdcuctContextProvider>
-  </AuthContextProvier>
+  <StrictMode>
+    <AuthContextProvier>
+      <ProdcuctContextProvider>
+        <CartContextProvider>
+          <Toaster />
+          <RouterProvider router={router} />
+        </CartContextProvider>
+      </ProdcuctContextProvider>
+    </AuthContextProvier>
+  </StrictMode>
 );

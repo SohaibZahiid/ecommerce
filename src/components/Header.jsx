@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { HiOutlineShoppingBag } from "react-icons/hi2";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import { HiMiniChevronDown } from "react-icons/hi2";
+import { HiMiniChevronDown, HiOutlineNewspaper } from "react-icons/hi2";
 import {
   HiMiniArrowRightOnRectangle,
   HiOutlineSquares2X2,
@@ -72,6 +72,10 @@ function Header() {
                           <Link to={"/dashboard"}>Dashboard</Link>
                         </div>
                       )}
+                      <div className="flex items-center gap-2">
+                        <HiOutlineNewspaper className="text-xl" />
+                        <Link to={"/myorders"}>Orders</Link>
+                      </div>
                       <div className="flex items-center gap-2">
                         <HiMiniArrowRightOnRectangle className="text-xl" />
                         <button

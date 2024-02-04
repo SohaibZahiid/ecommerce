@@ -15,19 +15,32 @@ function Cart() {
   const handleCheckout = async () => {
     if (currentUser) {
       try {
-        const res = await axios.post(
+        // const res = await axios.post(
+        //   `${import.meta.env.VITE_API_BASE_URL}/stripe/checkout`,
+        //   cart,
+        //   {
+        //     headers: {
+        //       "auth-token": `Bearer ${currentUser.token}`,
+        //     },
+        //   }
+        // );
+
+        // if (res.status === 200) {
+        //   // window.open(res.data.url, "_blank");
+        //   // window.open(res.data.url);
+        // }
+
+        const { data } = await axios.post(
           `${import.meta.env.VITE_API_BASE_URL}/stripe/checkout`,
-          cart,
+          { amount: getGrandTotal() },
           {
             headers: {
               "auth-token": `Bearer ${currentUser.token}`,
             },
           }
         );
-
-        if (res.status === 200) {
-          // window.open(res.data.url, "_blank");
-          // window.open(res.data.url);
+        if (data) {
+          navigate("/checkout", { state: data });
         }
       } catch (error) {
         toast.error(error.message);

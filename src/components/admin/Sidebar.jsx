@@ -4,6 +4,7 @@ import {
   HiMiniChevronDown,
   HiMiniChevronUp,
   HiOutlineArchiveBoxArrowDown,
+  HiOutlineNewspaper,
 } from "react-icons/hi2";
 import { Link } from "react-router-dom";
 
@@ -11,12 +12,12 @@ function Sidebar() {
   const [toggleDropdown, setToggleDropdown] = useState(false);
 
   return (
-    <aside className="p-5 sticky min-h-screen  min-w-[300px] border-r bg-slate-900 text-white hidden md:block">
+    <aside className="p-5 sticky min-h-screen min-w-[300px] border-r  hidden md:block">
       <h1 className="font-bold text-2xl mb-10">
         <Link to={"/dashboard"}>AppleAdmin</Link>
       </h1>
       <div>
-        <h2 className="font-bold mb-6 uppercase">Menu</h2>
+        <h2 className="font-bold mb-6 uppercase text-sm">Main</h2>
         <div className="flex flex-col gap-2">
           <Link to={"profile"}>
             <div className="flex items-center gap-2 py-2">
@@ -46,6 +47,12 @@ function Sidebar() {
               </div>
             )}
           </div>
+          <Link to={"orders"}>
+            <div className="flex items-center gap-2 py-2">
+              <HiOutlineNewspaper className="text-xl" />
+              Orders
+            </div>
+          </Link>
         </div>
       </div>
     </aside>

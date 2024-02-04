@@ -56,21 +56,6 @@ function List({ ths, orders }) {
                         {order.status}
                       </p>
                     </td>
-                    {currentUser.user.role === "admin" && (
-                      <td className="whitespace-nowrap px-6 py-4">
-                        <div className="flex gap-2 text-xl">
-                          <HiOutlineTrash
-                            className="cursor-pointer"
-                            onClick={() => handleDelete(order._id)}
-                          />
-                          <HiMiniPencilSquare
-                            className="cursor-pointer"
-                            onClick={() => {}}
-                          />
-                          <HiOutlineEye className="cursor-pointer" />
-                        </div>
-                      </td>
-                    )}
                   </tr>
                 ))}
               </tbody>

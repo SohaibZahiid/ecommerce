@@ -6,7 +6,7 @@ import {
   HiOutlineWallet,
 } from "react-icons/hi2";
 
-function Card({ type }) {
+function Card({ type, stats }) {
   let data;
 
   switch (type) {
@@ -15,6 +15,7 @@ function Card({ type }) {
         title: "USERS",
         isMoney: false,
         link: "See all users",
+        value: 100,
         icon: (
           <div className="p-1 bg-red-500 rounded-md">
             <HiOutlineUser className="text-white" />
@@ -27,6 +28,7 @@ function Card({ type }) {
         title: "ORDERS",
         isMoney: false,
         link: "View all users",
+        value: 100,
         icon: (
           <div className="p-1 bg-yellow-400 rounded-md">
             <HiOutlineArchiveBoxArrowDown className="text-white" />
@@ -39,6 +41,7 @@ function Card({ type }) {
         title: "EARNINGS",
         isMoney: true,
         link: "View all earnings",
+        value: stats?.incomeStats?.[0]?.earnings || 0,
         icon: (
           <div className="p-1 bg-green-500 rounded-md">
             <HiOutlineCurrencyDollar className="text-white" />
@@ -70,10 +73,12 @@ function Card({ type }) {
           <h2 className="uppercase font-bold">{data.title}</h2>
           <div className="text-green-600 flex items-center gap-1">
             <HiChevronUp />
-            <p>20 %</p>
+            <p> %</p>
           </div>
         </div>
-        <h2 className="text-3xl">{data.isMoney && "$"} 100</h2>
+        <h2 className="text-3xl">
+          {data.isMoney && "$"} {data.value}
+        </h2>
         <div className="flex justify-between">
           <p className="underline">{data.link}</p>
           {data.icon}

@@ -33,10 +33,7 @@ function Orders() {
   return (
     <section>
       <div className="container">
-        <List
-          ths={["User", "Order", "Amount", "Status", "Action"]}
-          orders={orders}
-        />
+        <List ths={["User", "Order", "Amount", "Status"]} orders={orders} />
       </div>
     </section>
   );

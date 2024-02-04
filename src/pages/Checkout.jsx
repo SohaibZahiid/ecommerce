@@ -35,7 +35,7 @@ const CheckoutForm = () => {
       products: cart,
       amount: getGrandTotal(),
       user: currentUser.user._id,
-      status: "paid",
+      status: "approved",
     };
 
     const { paymentIntent, error } = await stripe.confirmPayment({

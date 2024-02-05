@@ -8,8 +8,8 @@ import { AuthContext } from "../../context/AuthContext";
 function Panel() {
   const { currentUser } = useContext(AuthContext);
   const [stats, setStats] = useState({
-    userStats: null,
-    incomeStats: null,
+    userStats: [],
+    incomeStats: [],
   });
 
   const MONTHS = useMemo(
@@ -47,13 +47,10 @@ function Panel() {
           "Active Users": item.totalUsers,
         }));
 
-        const newIncomeStats = data.orders.map((item) => ({
-          name: MONTHS[item._id - 1],
-          earnings: item.totalEarnings,
-          orders: item.totalOrders,
-        }));
-
-        setStats({ userStats: newUserStats, incomeStats: newIncomeStats });
+        setStats({
+          incomeStats: data.orders,
+          userStats: newUserStats,
+        });
       }
     } catch (error) {
       toast.error(error.message);
@@ -64,19 +61,20 @@ function Panel() {
     getStats();
   }, [MONTHS]);
 
-  const sortedUserStats = stats?.userStats
-    ?.slice()
-    .sort((a, b) => MONTHS.indexOf(a.name) - MONTHS.indexOf(b.name));
-
   return (
     <section className="h-full p-5">
       <div className="flex justify-between flex-wrap gap-5">
-        <Card type={"users"} data={stats.userStats} />
-        <Card type={"orders"} />
-        <Card type={"earnings"} stats={{ incomeStats: stats.incomeStats }} />
+        <Card type={"users"} stats={{ userStats: stats.userStats }} />
+        <Card type={"orders"} stats={{ orderStats: stats.incomeStats }} />
+        <Card
+          type={"earnings"}
+          stats={{
+            incomeStats: stats.incomeStats,
+          }}
+        />
       </div>
       <div className="shadow-md rounded-md p-2 pb-6 mt-5">
-        <Chart data={sortedUserStats} />
+        <Chart data={stats.userStats} />
       </div>
     </section>
   );

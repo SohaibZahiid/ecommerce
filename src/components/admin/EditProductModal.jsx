@@ -6,6 +6,7 @@ import { HiXMark } from "react-icons/hi2";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 import { ProductContext } from "../../context/ProductContext";
+import { Button } from "../ui/button";
 
 function EditProductModal({ open, onClose, product }) {
   const { currentUser } = useContext(AuthContext);
@@ -168,9 +169,12 @@ function EditProductModal({ open, onClose, product }) {
             alt="product image"
             className="w-32 h-32 object-contain"
           />
-          <button type="submit" className="btn-primary self-start">
+          {/* <button type="submit" className="btn-primary self-start">
             Update
-          </button>
+          </button> */}
+          <Button className="w-max" type="submit">
+            Update
+          </Button>
         </form>
         <HiXMark
           onClick={() => {

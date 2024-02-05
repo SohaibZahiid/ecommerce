@@ -6,6 +6,7 @@ import { HiXMark } from "react-icons/hi2";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 import { ProductContext } from "../../context/ProductContext";
+import { Button } from "../ui/button";
 
 function ProductModal({ open, onClose }) {
   const { currentUser } = useContext(AuthContext);
@@ -61,7 +62,7 @@ function ProductModal({ open, onClose }) {
         onClose();
         resetForm();
       }}
-      className={`fixed inset-0 flex justify-center items-center transition-colors ${
+      className={`fixed inset-0 z-50 flex justify-center items-center transition-colors ${
         open ? "visible bg-black/20" : "invisible"
       }`}
     >
@@ -156,9 +157,10 @@ function ProductModal({ open, onClose }) {
               <span className="text-red-500 text-sm">{errors.image}</span>
             )}
           </div>
-          <button type="submit" className="btn-primary self-start">
+          {/* <button type="submit" className="btn-primary self-start">
             Create
-          </button>
+          </button> */}
+          <Button className="w-max">Create</Button>
         </form>
         <HiXMark
           onClick={() => {

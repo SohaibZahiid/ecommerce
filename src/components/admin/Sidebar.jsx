@@ -1,3 +1,4 @@
+import { HiCurrencyDollar } from "react-icons/hi2";
 import {
   MdDashboard,
   MdAccountBox,
@@ -29,7 +30,7 @@ function Sidebar() {
         <div>
           <h2 className="font-bold mb-3 uppercase text-sm">Lists</h2>
           <div className="flex flex-col gap-2">
-            <Link to={"/dashboard"}>
+            <Link to={"users"}>
               <div className="flex items-center gap-2">
                 <MdAccountBox className="text-xl" />
                 Users
@@ -45,6 +46,12 @@ function Sidebar() {
               <div className="flex items-center gap-2">
                 <MdArticle className="text-xl" />
                 Orders
+              </div>
+            </Link>
+            <Link to={"earnings"}>
+              <div className="flex items-center gap-2">
+                <HiCurrencyDollar className="text-xl" />
+                Earnings
               </div>
             </Link>
           </div>

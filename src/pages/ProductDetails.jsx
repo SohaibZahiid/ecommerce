@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 import axios from "axios";
 import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
 
 function ProductDetails() {
   const [product, setProduct] = useState([]);
@@ -70,12 +71,12 @@ function ProductDetails() {
             <p className="font-bold mb-6">${product.price}</p>
             <p className="font-bold">Description</p>
             <p>{product.desc}</p>
-            <button
+            <Button
               onClick={() => handleAddToCart(product)}
               className="inline-block btn-primary mt-4"
             >
               Add to cart
-            </button>
+            </Button>
           </div>
         </div>
 

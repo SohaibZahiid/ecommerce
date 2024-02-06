@@ -6,6 +6,7 @@ import { useFormik } from "formik";
 import { registerSchema } from "../schemas";
 import axios from "axios";
 import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
 
 function Register() {
   const [registerData, setRegisterData] = useState({
@@ -24,7 +25,7 @@ function Register() {
       onSubmit: async () => {
         try {
           const res = await axios.post(
-            `${import.meta.env.VITE_API_BASE_URL}/user/register`,
+            `${import.meta.env.VITE_API_BASE_URL}/users/register`,
             values
           );
           if (res.data) {
@@ -125,9 +126,9 @@ function Register() {
                 <span className="text-red-500 text-sm">{errors.password2}</span>
               )}
             </div>
-            <button type="submit" className="btn-primary self-start">
+            <Button type="submit" className="btn-primary self-start">
               Register
-            </button>
+            </Button>
           </form>
           <p className="mt-4">
             Already have an account?{" "}

@@ -6,13 +6,13 @@ import {
   HiOutlineWallet,
   HiChevronDown,
 } from "react-icons/hi2";
+import { Link } from "react-router-dom";
 
 function Card({ type, stats }) {
   let data;
 
   switch (type) {
     case "users":
-      console.log(stats);
       data = {
         title: "USERS",
         isMoney: false,
@@ -102,7 +102,9 @@ function Card({ type, stats }) {
           {data.isMoney && "$"} {data.value}
         </h2>
         <div className="flex justify-between">
-          <p className="underline">{data.link}</p>
+          <Link to={data.title.toLowerCase()} className="underline">
+            {data.link}
+          </Link>
           {data.icon}
         </div>
       </div>

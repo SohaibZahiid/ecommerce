@@ -1,13 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Button } from "./ui/button";
 
 function Hero() {
   return (
     <section>
-      <div
-        className="bg-gray-200 h-[600px] px-5 md:px-20 lg:px-32 rounded container flex flex-col justify-center 
-        hero-background"
-      >
+      <div className="bg-gray-200 h-[600px] px-5 md:px-20 lg:px-32 rounded container flex flex-col justify-center hero-background">
         <h1 className="text-7xl font-extrabold">
           Unleash Innovation <br /> in Every Byte.
         </h1>
@@ -19,7 +17,7 @@ function Hero() {
           to={"/shop"}
           className="btn-primary mt-10 self-start"
         >
-          Shop now
+          <Button className="btn">Shop now</Button>
         </Link>
       </div>
     </section>

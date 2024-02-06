@@ -10,7 +10,7 @@ export const AuthContextProvier = ({ children }) => {
 
   const login = async (inputs) => {
     const res = await axios.post(
-      `${import.meta.env.VITE_API_BASE_URL}/user/login`,
+      `${import.meta.env.VITE_API_BASE_URL}/users/login`,
       inputs
     );
     if (res.data) {

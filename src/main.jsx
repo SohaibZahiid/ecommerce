@@ -23,6 +23,10 @@ import MyOrders from "./pages/MyOrders.jsx";
 import Orders from "./pages/admin/Orders.jsx";
 import Chart from "./components/admin/Chart.jsx";
 import Panel from "./pages/admin/Panel.jsx";
+import Users from "./pages/admin/Users";
+import Earnings from "./pages/admin/Earnings";
+import PrivateRoute from "./utils/AdminRoute";
+import UserRoute from "./utils/UserRoute";
 
 // const router = createBrowserRouter([
 //   {
@@ -104,7 +108,12 @@ const router = createBrowserRouter([
       },
       {
         path: "myorders",
-        element: <MyOrders />,
+        element: (
+          <UserRoute>
+            {" "}
+            <MyOrders />
+          </UserRoute>
+        ),
       },
     ],
   },
@@ -114,7 +123,12 @@ const router = createBrowserRouter([
   // },
   {
     path: "dashboard",
-    element: <Dashboard />,
+    element: (
+      <PrivateRoute>
+        {" "}
+        <Dashboard />
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "",
@@ -131,6 +145,14 @@ const router = createBrowserRouter([
       {
         path: "orders",
         element: <Orders />,
+      },
+      {
+        path: "users",
+        element: <Users />,
+      },
+      {
+        path: "earnings",
+        element: <Earnings />,
       },
     ],
   },

@@ -7,6 +7,7 @@ import {
   HiMiniArrowRightOnRectangle,
   HiOutlineSquares2X2,
 } from "react-icons/hi2";
+import { Button } from "./ui/button";
 
 function Header() {
   const { currentUser, logout } = useContext(AuthContext);
@@ -29,7 +30,7 @@ function Header() {
 
   return (
     <header>
-      <div className="flex justify-between  py-8 container">
+      <div className="flex justify-between py-6 container">
         <h2 className="text-2xl font-bold">
           <Link aria-label="apple home page" to={"/"}>
             Apple
@@ -49,8 +50,8 @@ function Header() {
 
           <li>
             {!currentUser ? (
-              <Link aria-label="login" to={"/login"} className="btn-primary">
-                Login
+              <Link aria-label="login" to={"/login"}>
+                <Button>Login</Button>
               </Link>
             ) : (
               <div className="relative" ref={toggleRef}>

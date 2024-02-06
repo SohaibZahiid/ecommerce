@@ -6,6 +6,7 @@ import { AuthContext } from "../context/AuthContext";
 import { toast } from "sonner";
 import { useFormik } from "formik";
 import { loginSchema } from "../schemas";
+import { Button } from "@/components/ui/button";
 
 function Login() {
   const { login } = useContext(AuthContext);
@@ -91,9 +92,9 @@ function Login() {
                 <span className="text-red-500 text-sm">{errors.password}</span>
               )}{" "}
             </div>
-            <button type="submit" className="btn-primary self-start">
+            <Button type="submit" className="self-start">
               Login
-            </button>
+            </Button>
           </form>
           <p className="mt-4">
             Already have an account?{" "}

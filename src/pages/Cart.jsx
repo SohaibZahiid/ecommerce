@@ -6,6 +6,7 @@ import { CartContext } from "../context/CartContext";
 import { AuthContext } from "../context/AuthContext";
 import { toast } from "sonner";
 import axios from "axios";
+import { Button } from "@/components/ui/button";
 
 function Cart() {
   const { cart, getGrandTotal } = useContext(CartContext);
@@ -74,13 +75,13 @@ function Cart() {
                 <p className="font-bold">Grand total</p>
                 <p>${getGrandTotal()}</p>
               </div>
-              <div className="flex ">
-                <button
+              <div className="flex">
+                <Button
                   onClick={handleCheckout}
                   className="btn-primary w-full mt-4"
                 >
                   Checkout
-                </button>
+                </Button>
               </div>
             </div>
           </div>
@@ -100,7 +101,7 @@ function Cart() {
             to={"/shop"}
             className="btn-primary w-max"
           >
-            Continue shopping
+            <Button>Continue shopping</Button>
           </Link>
         </div>
       </div>

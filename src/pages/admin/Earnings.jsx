@@ -28,7 +28,6 @@ function Earnings() {
         }
       );
       if (data) {
-        console.log(data);
         setEarnings(data);
       }
     } catch (error) {
@@ -41,7 +40,7 @@ function Earnings() {
   }, []);
 
   return (
-    <div className="p-5">
+    <div className="p-5 my-5">
       <h2 className="font-bold text-2xl mb-2">Users</h2>
       <Table>
         <TableCaption>A list of your earnings.</TableCaption>

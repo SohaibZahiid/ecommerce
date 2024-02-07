@@ -76,10 +76,7 @@ function Cart() {
                 <p>${getGrandTotal()}</p>
               </div>
               <div className="flex">
-                <Button
-                  onClick={handleCheckout}
-                  className="btn-primary w-full mt-4"
-                >
+                <Button onClick={handleCheckout} className="w-full mt-4">
                   Checkout
                 </Button>
               </div>
@@ -96,11 +93,7 @@ function Cart() {
               wardrobe, or a unique addition to your collection.
             </p>
           </div>
-          <Link
-            aria-label="Continue shopping"
-            to={"/shop"}
-            className="btn-primary w-max"
-          >
+          <Link aria-label="Continue shopping" to={"/shop"} className="w-max">
             <Button>Continue shopping</Button>
           </Link>
         </div>

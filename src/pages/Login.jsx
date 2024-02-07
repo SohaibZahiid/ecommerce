@@ -35,7 +35,7 @@ function Login() {
     });
 
   return (
-    <section className="flex h-screen">
+    <section className="flex h-screen px-5">
       <div className="hidden xl:block flex-1">
         <img src={image} alt="image" className="h-full w-full object-cover " />
       </div>
@@ -50,15 +50,8 @@ function Login() {
           <h2 className="font-bold text-2xl">Welcome</h2>
           <p className="text-gray-500">
             Please login here <br />
-            This is where your customer will login to manage their account,
-            review their history, and more. To manage all users,{" "}
-            <Link
-              aria-label="admin"
-              to={"/admin"}
-              className="underline text-black"
-            >
-              login to the admin dashboard
-            </Link>
+            This is where your customer & admin will login to manage their
+            account, review their history, and more.
           </p>
           <form className="flex flex-col gap-4 mt-6" onSubmit={handleSubmit}>
             <div className="flex flex-col">

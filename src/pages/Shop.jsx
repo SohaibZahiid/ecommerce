@@ -10,6 +10,7 @@ function Shop() {
   const [sortFilter, setSortFilter] = useState("latest");
   const location = useLocation();
   const param = new URLSearchParams(location.search).get("category");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (param) {
@@ -18,6 +19,7 @@ function Shop() {
   }, [param]);
 
   async function getProducts() {
+    setIsLoading(true);
     let url = "products";
 
     if (param) {
@@ -41,6 +43,8 @@ function Shop() {
       setProducts(res.data);
     } catch (error) {
       toast.error(error.message);
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -124,20 +128,26 @@ function Shop() {
             </div>
           </div>
         </div>
-        <div className="flex-1 mb-4">
-          <h2 className="font-bold mb-4">
-            Showing 1 - 9 of {products.length} Products
-          </h2>
-          {products.length > 0 ? (
-            <div className="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
-              {products.map((product) => (
-                <Product key={product._id} product={product} />
-              ))}
-            </div>
-          ) : (
-            <h2 className="text-center mt-10">0 products found.</h2>
-          )}
-        </div>
+        {isLoading ? (
+          <div className="flex justify-center items-center w-full">
+            Loading...
+          </div>
+        ) : (
+          <div className="flex-1 mb-4">
+            <h2 className="font-bold mb-4">
+              Showing 1 - 9 of {products.length} Products
+            </h2>
+            {products.length > 0 ? (
+              <div className="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+                {products.map((product) => (
+                  <Product key={product._id} product={product} />
+                ))}
+              </div>
+            ) : (
+              <h2 className="text-center mt-10">0 products found.</h2>
+            )}
+          </div>
+        )}
       </div>
     </section>
   );

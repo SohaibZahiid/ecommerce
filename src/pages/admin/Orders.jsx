@@ -32,7 +32,7 @@ function Orders() {
 
   return (
     <section>
-      <div className="p-5">
+      <div className="p-5 my-5">
         <List ths={["User", "Order", "Amount", "Status"]} orders={orders} />
       </div>
     </section>

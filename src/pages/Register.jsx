@@ -39,7 +39,7 @@ function Register() {
     });
 
   return (
-    <section className="flex h-screen">
+    <section className="flex h-screen px-5">
       <div className="hidden xl:block flex-1">
         <img src={image} alt="image" className="h-full w-full object-cover" />
       </div>

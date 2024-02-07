@@ -8,9 +8,11 @@ import {
   HiOutlineSquares2X2,
 } from "react-icons/hi2";
 import { Button } from "./ui/button";
+import { CartContext } from "@/context/CartContext";
 
 function Header() {
   const { currentUser, logout } = useContext(AuthContext);
+  const { cart } = useContext(CartContext);
   const [toggleDropdown, setToggleDropdown] = useState(false);
   const toggleRef = useRef(null);
   const navigate = useNavigate();
@@ -30,7 +32,7 @@ function Header() {
 
   return (
     <header>
-      <div className="flex justify-between py-6 container">
+      <div className="flex justify-between items-center py-6 container">
         <h2 className="text-2xl font-bold">
           <Link aria-label="apple home page" to={"/"}>
             Apple
@@ -73,10 +75,12 @@ function Header() {
                           <Link to={"/dashboard"}>Dashboard</Link>
                         </div>
                       )}
-                      <div className="flex items-center gap-2">
-                        <HiOutlineNewspaper className="text-xl" />
-                        <Link to={"/myorders"}>Orders</Link>
-                      </div>
+                      {currentUser.user.role !== "admin" && (
+                        <div className="flex items-center gap-2">
+                          <HiOutlineNewspaper className="text-xl" />
+                          <Link to={"/myorders"}>Orders</Link>
+                        </div>
+                      )}
                       <div className="flex items-center gap-2">
                         <HiMiniArrowRightOnRectangle className="text-xl" />
                         <button
@@ -95,9 +99,16 @@ function Header() {
             )}
           </li>
           <li>
-            <Link aria-label="cart" to={"/cart"}>
-              <HiOutlineShoppingBag />
-            </Link>
+            <div className="relative">
+              <Link aria-label="cart" to={"/cart"}>
+                <HiOutlineShoppingBag className="text-xl" />
+              </Link>
+              {cart.length > 0 && (
+                <div className="bg-red-500 text-white text-sm absolute -right-2 -top-2 w-4 h-4 flex items-center justify-center rounded-full">
+                  {cart.length}
+                </div>
+              )}
+            </div>
           </li>
         </ul>
       </div>

@@ -13,6 +13,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import { toast } from "sonner";
 import axios from "axios";
+import { Button } from "@/components/ui/button";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_KEY);
 
@@ -35,7 +36,7 @@ const CheckoutForm = () => {
       products: cart,
       amount: getGrandTotal(),
       user: currentUser.user._id,
-      status: "approved",
+      status: "paid",
     };
 
     const { paymentIntent, error } = await stripe.confirmPayment({
@@ -75,13 +76,9 @@ const CheckoutForm = () => {
     <div className="max-w-[400px] m-auto">
       <form onSubmit={submitHandler}>
         <PaymentElement />
-        <button
-          type="submit"
-          className="btn-primary w-full mt-4"
-          disabled={isProcessing}
-        >
+        <Button type="submit" className="w-full mt-4" disabled={isProcessing}>
           {isProcessing ? "Processing..." : "Pay"}
-        </button>
+        </Button>
       </form>
     </div>
   );

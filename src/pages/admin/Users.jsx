@@ -39,7 +39,7 @@ function Users() {
   }, [users]);
 
   return (
-    <div className="p-5">
+    <div className="p-5 my-5">
       <h2 className="font-bold text-2xl mb-2">Users</h2>
       <Table>
         <TableCaption>A list of your users.</TableCaption>

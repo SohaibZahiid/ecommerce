@@ -5,6 +5,7 @@ import { registerSchema } from "../../schemas";
 import { toast } from "sonner";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
+import { Button } from "@/components/ui/button";
 
 function Profile() {
   const { currentUser, setCurrentUser } = useContext(AuthContext);
@@ -35,7 +36,6 @@ function Profile() {
           );
 
           if (res.data) {
-            console.log(res.data);
             setCurrentUser(res.data);
             toast.success("Admin updated successfully.");
           }
@@ -115,9 +115,9 @@ function Profile() {
               <span className="text-red-500 text-sm">{errors.password2}</span>
             )}
           </div>
-          <button type="submit" className="btn-primary self-start">
+          <Button type="submit" className="self-start">
             Update
-          </button>
+          </Button>
         </form>
       </div>
     </div>

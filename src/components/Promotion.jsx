@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import image from "../assets/images/image-4.svg";
 import { Link } from "react-router-dom";
+import { Button } from "./ui/button";
 
 function Promotion() {
   const [countdown, setCountdown] = useState({
@@ -46,7 +47,7 @@ function Promotion() {
             making this month a celebration of savvy choices and amazing deals.
             Don't miss out!
           </p>
-          <div className="flex gap-8 mt-4">
+          <div className="flex flex-wrap gap-8 mt-4">
             <div className="min-w-[100px] flex flex-col items-center justify-center py-2 px-4 border border-gray-100">
               <h2 className="text-2xl font-bold">{countdown.days}</h2>
               <p>Days</p>
@@ -67,9 +68,9 @@ function Promotion() {
           <Link
             aria-label="View products"
             to={"/shop"}
-            className="inline-block btn-primary mt-4"
+            className="inline-block mt-4"
           >
-            View products
+            <Button>View products</Button>
           </Link>
         </div>
         <div>

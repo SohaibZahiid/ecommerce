@@ -53,7 +53,7 @@ function ProductDetails() {
 
   return (
     <section>
-      <div className="container ">
+      <div className="container my-10">
         <div className="flex flex-col md:flex-row">
           <div className="bg-gray-100 flex-1 h-[400px] flex justify-center items-center">
             <img

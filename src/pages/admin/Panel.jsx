@@ -62,7 +62,7 @@ function Panel() {
   }, [MONTHS]);
 
   return (
-    <section className="h-full p-5">
+    <section className="h-full p-5 my-5">
       <div className="flex justify-between flex-wrap gap-5">
         <Card type={"users"} stats={{ userStats: stats.userStats }} />
         <Card type={"orders"} stats={{ orderStats: stats.incomeStats }} />

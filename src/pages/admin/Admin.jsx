@@ -29,7 +29,6 @@ function Admin() {
           if (res.data.user) {
             navigate("/admin/dashboard");
           }
-          console.log(res);
         } catch (error) {
           toast.error(error.response.data.message);
         }

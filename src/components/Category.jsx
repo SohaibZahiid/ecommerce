@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Category({ category }) {
   return (
-    <div className="bg-gray-200 flex-1 min-w-[400px] h-[350px] rounded-md flex flex-col relative">
+    <div className="bg-gray-200 flex-1 min-w-[350px] h-[350px] rounded-md flex flex-col relative">
       <img
         src={category.image}
         alt="watch"
